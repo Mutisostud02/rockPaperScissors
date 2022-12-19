@@ -15,8 +15,7 @@ function player(){
    let ansr= prompt("Select your rock-paper-scissor choice:");
    return ansr.toLowerCase();
 }
-let fail;//for everytime I lose ,to be used to give game results
-let win//for every time I win
+
 let compScore=0;
 let userScore=0;
 
@@ -73,11 +72,12 @@ function playRound(playerSelection,computerSelection){
       
    }
 }
-let arr=[];
+
 
 function game(){
    for(let i=1;i<6;i++){
    console.log((playRound(player(),getComputerChoice())));
+   
 
    }
 console.log("computer score is: " + compScore);
