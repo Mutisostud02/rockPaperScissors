@@ -10,85 +10,98 @@ function getComputerChoice(){
       return 'scissors';
    }
 }
-
-function player(){
-   let ansr= prompt("Select your rock-paper-scissor choice:");
-   return ansr.toLowerCase();
-}
-
 let compScore=0;
 let userScore=0;
+
+function playRock(){
+      let answ=rockBtn.textContent;
+      return answ.toLowerCase();
+}
+function playPaper(){
+   let answ=papBtn.textContent;
+   return answ.toLowerCase();
+}
+function playScissors(){
+   let answ=scissBtn.textContent;
+   return answ.toLowerCase();
+}
+
+
+
 
 
 function playRound(playerSelection,computerSelection){
 
   if(playerSelection=='rock' && computerSelection=='paper'){
-   compScore++;
-  return "you lose!Paper beats rock";
+   comp.textContent="Our Score Is " + ++compScore;
+  return results.textContent="you lose!Paper beats rock";
   
   }
   if(playerSelection=='rock' && computerSelection=='scissors'){
-   userScore++;
-   return "you win!rock beats scissors";
+   user.textContent="Your Score Is " + ++userScore;
+   return results.textContent="you win!rock beats scissors";
    
    }
    if(playerSelection=='paper' && computerSelection=='rock'){
-      userScore++;
-   return "you win! Paper beats rock";
+      user.textContent="Your Score Is " + ++userScore;
+   return results.textContent="you win! Paper beats rock";
    
    }
    if(playerSelection=='paper' && computerSelection=='scissors'){
-      compScore++;
-   return "you lose! scissors beats paper";
+     comp.textContent="Our Score Is " + ++compScore;
+   return results.textContent="you lose! scissors beats paper";
  
    }
    if(playerSelection=='scissors' && computerSelection=='paper'){
-      userScore++;
-   return "you win! scissors beats paper";
+      user.textContent="Your Score Is " + ++userScore;
+   return results.textContent="you win! scissors beats paper";
 
    }
    if(playerSelection=='scissors' && computerSelection=='rock'){
-      compScore++;
-   return "you lose! rock beats scissors";
+      comp.textContent="Our Score Is " + ++compScore;
+   return results.textContent="you lose! rock beats scissors";
    
    }
    if(playerSelection=='rock' && computerSelection=='rock'){
-   return "Its a tie!";
+   return results.textContent="Its a tie!";
    }if(playerSelection=='paper' && computerSelection=='paper'){
-   return "Its a tie!";
+   return results.textContent="Its a tie!";
    }
    if(playerSelection=='scissors' && computerSelection=='scissors'){
-   return "Its a tie!";
+   return results.textContent="Its a tie!";
    }
    if(playerSelection==''){
-      compScore++;
-      return "you lose! Invalid answer!";
+      comp.textContent="Our Score Is " + ++compScore;
+      return results.textContent="you lose! Invalid answer!";
       
      
    }
    if(playerSelection!='scissors' && playerSelection!='paper' && playerSelection!='rock'){
-      compScore++;
-      return "you lose! Incorrect choice!";
+      comp.textContent="Our Score Is " + ++compScore;
+     return results.textContent="you lose! Incorrect choice!";
       
    }
 }
+const results=document.querySelector('.results');
+const comp=document.querySelector('.comp');
+const user=document.querySelector('.user');
+const rockBtn=document.querySelector('.rock');
+const papBtn=document.querySelector('.paper');
+const scissBtn=document.querySelector('.scissors');
+
+rockBtn.addEventListener('click',()=>{
+   console.log(playRound(playRock(),getComputerChoice()));
+});
+papBtn.addEventListener('click',()=>{
+   console.log(playRound(playPaper(),getComputerChoice()));
+});
+scissBtn.addEventListener('click',()=>{
+   console.log(playRound(playScissors(),getComputerChoice()));
+});
+
 
 
 function game(){
-   for(let i=1;i<6;i++){
-   console.log((playRound(player(),getComputerChoice())));
-   
 
-   }
-console.log("computer score is: " + compScore);
-console.log("user score is : " + userScore);
-if(compScore>userScore){
-   console.log("GAME OVER!! You Have lost");
-}else if(compScore<userScore){
-   console.log("CONGRATULATIONS!! You Have Won")
-}else{
-   console.log("GAME OVER!! No Winner, Reload to Play Again");
-}
 }
 
-game();
