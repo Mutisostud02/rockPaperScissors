@@ -84,17 +84,20 @@ function playRound(playerSelection,computerSelection){
      return results.textContent="you lose! Incorrect choice!";
       
    }
-}else if(compScore==5 || userScore==5){
-   if(compScore==5){
+}else if(compScore>4 || userScore>4){
+   if(compScore>4){
       return winner.textContent="GAME OVER!! YOU LOSE";
-   }else if(userScore==5)
+   }else if(userScore>4)
    return winner.textContent="CONGRATULATIONS!! YOU WON";
    
+}else if(compScore>5 || userScore>5){
+   return playAgain.textContent="RELOAD TO PLAY AGAIN";
 }
 
 }
 
-//getting DOM elements 
+//getting DOM elements
+const playAgain=document.querySelector('.playAgain'); 
 const winner=document.querySelector('.winner');
 const results=document.querySelector('.results');
 const comp=document.querySelector('.comp');
