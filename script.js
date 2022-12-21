@@ -34,6 +34,7 @@ let userScore=0;//player score to be incremented when player wins a round
 
 //function that plays the player choice against the comp choice and gives result while incrementing the scores
 function playRound(playerSelection,computerSelection){
+   if(compScore<5 && userScore<5){
   if(playerSelection=='rock' && computerSelection=='paper'){
    comp.textContent="Our Score Is " + ++compScore;
   return results.textContent="you lose!Paper beats rock";
@@ -83,9 +84,18 @@ function playRound(playerSelection,computerSelection){
      return results.textContent="you lose! Incorrect choice!";
       
    }
+}else if(compScore==5 || userScore==5){
+   if(compScore==5){
+      return winner.textContent="GAME OVER!! YOU LOSE";
+   }else if(userScore==5)
+   return winner.textContent="CONGRATULATIONS!! YOU WON";
+   
+}
+
 }
 
 //getting DOM elements 
+const winner=document.querySelector('.winner');
 const results=document.querySelector('.results');
 const comp=document.querySelector('.comp');
 const user=document.querySelector('.user');
